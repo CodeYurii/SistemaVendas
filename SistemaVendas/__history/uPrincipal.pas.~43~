@@ -1,0 +1,224 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.WinXCtrls, Vcl.Buttons, Vcl.ToolWin, Vcl.ComCtrls;
+
+type
+  TFormPrincipal = class(TForm)
+    Panel1: TPanel;
+    SplitView1: TSplitView;
+    ToolBar1: TToolBar;
+    Image1: TImage;
+    SButtonSair: TSpeedButton;
+    SButtonRel: TSpeedButton;
+    SButtonCons: TSpeedButton;
+    SButtonFin: TSpeedButton;
+    SButtonEst: TSpeedButton;
+    SButtonMov: TSpeedButton;
+    SButtonCad: TSpeedButton;
+    SButtonConfig: TSpeedButton;
+    SButtonUti: TSpeedButton;
+    PanelFundoCentro: TPanel;
+    PanelSubMenuCad: TPanel;
+    SButtonGrupos: TSpeedButton;
+    SButtonProdutos: TSpeedButton;
+    SButtonClientes: TSpeedButton;
+    SButtonVendedores: TSpeedButton;
+    SButtonFornecedores: TSpeedButton;
+    PanelSubMenuMov: TPanel;
+    SButtonCompras: TSpeedButton;
+    SButtonOrcamento: TSpeedButton;
+    SButtonPedidos: TSpeedButton;
+    PanelSubMenuCons: TPanel;
+    SpeedButton13: TSpeedButton;
+    SpeedButton14: TSpeedButton;
+    SButtonContasPagar: TSpeedButton;
+    SpeedButton15: TSpeedButton;
+    SpeedButton16: TSpeedButton;
+    PanelSubMenuFin: TPanel;
+    SpeedButton17: TSpeedButton;
+    SpeedButton18: TSpeedButton;
+    SpeedButton19: TSpeedButton;
+    SpeedButton20: TSpeedButton;
+    SpeedButton21: TSpeedButton;
+    SpeedButton22: TSpeedButton;
+    SpeedButton23: TSpeedButton;
+    PanelSubMenuConfig: TPanel;
+    SpeedButton24: TSpeedButton;
+    SpeedButton25: TSpeedButton;
+    SButtonUsuarios: TSpeedButton;
+    procedure Image1Click(Sender: TObject);
+    procedure SButtonSairClick(Sender: TObject);
+    procedure SButtonCadClick(Sender: TObject);
+    procedure SButtonMovClick(Sender: TObject);
+    procedure SButtonEstClick(Sender: TObject);
+    procedure SButtonFinClick(Sender: TObject);
+    procedure SButtonConsClick(Sender: TObject);
+    procedure SButtonRelClick(Sender: TObject);
+    procedure SButtonConfigClick(Sender: TObject);
+    procedure SButtonUtiClick(Sender: TObject);
+    procedure SButtonClientesClick(Sender: TObject);
+    procedure SButtonProdutosClick(Sender: TObject);
+    procedure SButtonGruposClick(Sender: TObject);
+    procedure SButtonFornecedoresClick(Sender: TObject);
+    procedure SButtonVendedoresClick(Sender: TObject);
+    procedure SButtonPedidosClick(Sender: TObject);
+    procedure SButtonOrcamentoClick(Sender: TObject);
+    procedure SButtonComprasClick(Sender: TObject);
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+     procedure AbreSubMenu(Sbutton: TSpeedButton; Apanel: TPanel);
+     procedure FechaSubMenu(Sbutton: TSpeedButton; Apanel: TPanel);
+     procedure FechaTodosSubMenu;
+
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormPrincipal.FechaTodosSubMenu;
+begin
+ PanelSubMenuCad.Visible := false;
+ PanelSubMenuMov.Visible := false;
+ PanelSubMenuFin.Visible := false;
+ PanelSubMenuCons.Visible := false;
+ PanelSubMenuConfig.Visible := false;
+end;
+
+procedure TFormPrincipal.AbreSubMenu(Sbutton: TSpeedButton; Apanel: TPanel);
+  begin
+    Apanel.Visible := true;
+    Apanel.Left := -1;
+    Sbutton.GroupIndex := 1;
+  end;
+
+  procedure TFormPrincipal.FechaSubMenu(Sbutton: TSpeedButton; Apanel: TPanel);
+  begin
+    Apanel.Visible := false;
+    Sbutton.GroupIndex := 0;
+  end;
+
+procedure TFormPrincipal.Image1Click(Sender: TObject);
+begin
+if SplitView1.Opened = True then
+  begin
+    SplitView1.Opened := False;
+  end
+else
+  begin
+    SplitView1.Opened := True;
+  end;
+end;
+
+
+//BOTÃO CATEGORIAS
+procedure TFormPrincipal.SButtonCadClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  AbreSubMenu(SButtonCad, PanelSubMenuCad);
+end;
+
+procedure TFormPrincipal.SButtonClientesClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonClientes, PanelSubMenuCad);
+end;
+
+procedure TFormPrincipal.SButtonProdutosClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonProdutos, PanelSubMenuCad);
+end;
+
+procedure TFormPrincipal.SButtonGruposClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonGrupos, PanelSubMenuCad);
+end;
+
+procedure TFormPrincipal.SButtonVendedoresClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonVendedores, PanelSubMenuCad);
+end;
+
+procedure TFormPrincipal.SButtonFornecedoresClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonFornecedores, PanelSubMenuCad);
+end;
+
+
+//BOTÃO MOVIMENTAÇÃO
+procedure TFormPrincipal.SButtonMovClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  AbreSubMenu(SButtonMov, PanelSubMenuMov);
+end;
+
+procedure TFormPrincipal.SButtonPedidosClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonPedidos, PanelSubMenuMov);
+end;
+
+procedure TFormPrincipal.SButtonOrcamentoClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonOrcamento, PanelSubMenuMov);
+end;
+
+procedure TFormPrincipal.SButtonComprasClick(Sender: TObject);
+begin
+  FechaSubMenu(SButtonCompras, PanelSubMenuMov);
+end;
+
+
+procedure TFormPrincipal.SButtonConfigClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  AbreSubMenu(SButtonConfig, PanelSubMenuConfig);
+end;
+
+procedure TFormPrincipal.SButtonConsClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  AbreSubMenu(SButtonCons, PanelSubMenuCons);
+end;
+
+procedure TFormPrincipal.SButtonEstClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  //AbreSubMenu(SButtonEst, PanelSubMenuEst);
+end;
+
+procedure TFormPrincipal.SButtonFinClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  AbreSubMenu(SButtonFin, PanelSubMenuFin);
+end;
+
+procedure TFormPrincipal.SButtonUtiClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  //AbreSubMenu(SButtonUti, PanelSubMenuUti);
+end;
+
+
+
+procedure TFormPrincipal.SButtonRelClick(Sender: TObject);
+begin
+  FechaTodosSubMenu;
+  //AbreSubMenu(SButtonRel, PanelSubMenuRel);
+end;
+
+procedure TFormPrincipal.SButtonSairClick(Sender: TObject);
+begin
+  close;
+end;
+
+end.
